@@ -1,0 +1,60 @@
+{
+  "app": {
+    "title": "Shopping Demo",
+    "tagline": "Great products, great prices",
+    "currencySymbol": "$",
+    "listTitle": "Featured products",
+    "addToCartLabel": "Add to cart",
+    "checkoutLabel": "Checkout"
+  },
+  "products": [
+    {
+      "id": "p1",
+      "title": "Wireless Headphones",
+      "price": 129.99,
+      "image": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=600&q=80",
+      "description": "Over-ear wireless headphones with active noise cancellation and 30 hours of battery life.",
+      "category": "Audio"
+    },
+    {
+      "id": "p2",
+      "title": "Smart Watch",
+      "price": 199.0,
+      "image": "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=600&q=80",
+      "description": "Track workouts, heart rate, and notifications with a bright always-on display.",
+      "category": "Wearables"
+    },
+    {
+      "id": "p3",
+      "title": "Mechanical Keyboard",
+      "price": 89.5,
+      "image": "https://images.unsplash.com/photo-1541140532154-b024d705b90a?auto=format&fit=crop&w=600&q=80",
+      "description": "Compact 75% mechanical keyboard with hot-swappable switches and RGB backlighting.",
+      "category": "Accessories"
+    },
+    {
+      "id": "p4",
+      "title": "Bluetooth Speaker",
+      "price": 59.99,
+      "image": "https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?auto=format&fit=crop&w=600&q=80",
+      "description": "Portable waterproof speaker with deep bass and 12 hours of playtime.",
+      "category": "Audio"
+    },
+    {
+      "id": "p5",
+      "title": "Wireless Mouse",
+      "price": 39.99,
+      "image": "https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?auto=format&fit=crop&w=600&q=80",
+      "description": "Ergonomic silent wireless mouse with adjustable DPI and USB-C charging.",
+      "category": "Accessories"
+    },
+    {
+      "id": "p6",
+      "title": "4K Action Camera",
+      "price": 249.0,
+      "image": "https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?auto=format&fit=crop&w=600&q=80",
+      "description": "Rugged 4K action camera with image stabilization and waterproof housing.",
+      "category": "Cameras"
+    }
+  ]
+}
