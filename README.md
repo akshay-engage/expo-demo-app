@@ -2,8 +2,10 @@
 
 A simple shopping demo app built with Expo (SDK 57) and Expo Router.
 
-> **Note:** This is the Expo demo app **without WebEngage integration**.
-> Use it as a clean baseline to test integration and compare behavior before/after adding WebEngage.
+> **Note:** WebEngage is integrated in this app by following the official Expo guide:
+> [https://docs.webengage.com/docs/expo](https://docs.webengage.com/docs/expo)
+>
+> For **Expo push notifications**, follow the branch: `demo/webengage_expo_push`
 
 ## Features
 
@@ -92,10 +94,18 @@ src/
   components/            # Shared UI (product card, themed text/view)
 ```
 
+## WebEngage Integration
+
+WebEngage was integrated by following the official Expo guide:
+[https://docs.webengage.com/docs/expo](https://docs.webengage.com/docs/expo)
+
+- For **Expo push notifications**, follow the branch: `demo/webengage_expo_push`
+- The License Code and environment are configured through the WebEngage Expo config plugin in `app.json`. Replace the License Code with your own before building.
+- After changing any WebEngage config in `app.json`, regenerate the native projects with `npx expo prebuild --clean`.
+
 ## Notes
 
 - Login and cart state are kept in memory only, so they reset when the app restarts.
-- This baseline has no analytics or SDK integrations. WebEngage (or any other SDK) can be added on top.
 
 ## Useful Links
 
