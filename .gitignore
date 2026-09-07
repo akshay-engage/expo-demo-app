@@ -41,3 +41,56 @@ example
 # generated native folders
 /ios
 /android
+
+# lockfiles (not shared with end user)
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+bun.lockb
+bun.lock
+
+# secrets / environment
+.env
+.env.*
+!.env.example
+*.env
+secrets.json
+**/secrets/**
+
+# Firebase / Google / Apple service files
+google-services.json
+GoogleService-Info.plist
+**/google-services.json
+**/GoogleService-Info.plist
+firebase.json
+.firebaserc
+apple-app-site-association
+
+# credentials, keys, certificates
+*.keystore
+*.jks
+*.p8
+*.p12
+*.pem
+*.key
+*.cer
+*.crt
+*.mobileprovision
+*.der
+serviceAccount*.json
+credentials.json
+
+# Expo / EAS
+credentials/
+.easignore
+
+# AI / editor tooling (internal, not for end user)
+.claude/
+CLAUDE.md
+AGENTS.md
+.cursor/
+.cursorrules
+.windsurf/
+.github/copilot-instructions.md
+.vscode/
+.idea/
