@@ -6,6 +6,7 @@ import { useColorScheme } from 'react-native';
 import { AnimatedSplashOverlay } from '@/components/animated-icon';
 import { CartProvider } from '@/context/cart-context';
 import { UserProvider, useUser } from '@/context/user-context';
+import { usePushNotifications, requestPushPermission } from '@/hooks/use-push-notifications';
 
 function RootNavigator() {
   const { isReady } = useUser();
@@ -34,6 +35,12 @@ export default function RootLayout() {
   // "ExpoAsset.downloadAsync ... Ionicons.ttf" failures when the device can't
   // reach the CLI. Hold rendering until the font is ready.
   const [fontsLoaded] = useFonts(Ionicons.font);
+
+  // Set up push notifications for both iOS and Android
+  usePushNotifications();
+
+  // Request push notification permission on app start
+  requestPushPermission();
 
   if (!fontsLoaded) {
     return null;

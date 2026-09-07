@@ -14,11 +14,13 @@ import { Spacing } from '@/constants/theme';
 import { useUser } from '@/context/user-context';
 import { appConfig } from '@/data/catalog';
 import { useTheme } from '@/hooks/use-theme';
+import WebEngage from 'react-native-webengage';
 
 export default function LoginScreen() {
   const { login, skip } = useUser();
   const theme = useTheme();
   const [name, setName] = useState('');
+  const webEngage = new WebEngage();
 
   const trimmed = name.trim();
 
@@ -26,7 +28,9 @@ export default function LoginScreen() {
   // navigator to the tabs group as soon as the session becomes "ready", so we
   // just update the context here.
   const handleLogin = () => {
-    login(trimmed.length > 0 ? trimmed : 'Shopper');
+    const userName = trimmed.length > 0 ? trimmed : 'Shopper';
+    login(userName);
+    webEngage.user.login(userName);
   };
 
   return (

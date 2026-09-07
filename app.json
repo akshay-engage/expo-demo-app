@@ -19,7 +19,8 @@
         "monochromeImage": "./assets/images/android-icon-monochrome.png"
       },
       "predictiveBackGestureEnabled": false,
-      "package": "com.webengage.reactSample"
+      "package": "com.webengage.reactSample",
+      "googleServicesFile": "./google-services.json"
     },
     "web": {
       "output": "static",
@@ -62,6 +63,12 @@
               "com.webengage.sdk.android.debug": true
             }
           }
+        }
+      ],
+      [
+        "webengage-expo-push",
+        {
+          "mode": "development"
         }
       ]
     ],
