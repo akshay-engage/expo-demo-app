@@ -19,7 +19,7 @@
         "monochromeImage": "./assets/images/android-icon-monochrome.png"
       },
       "predictiveBackGestureEnabled": false,
-      "package": "com.akshaychilad.expodemoapp"
+      "package": "com.webengage.reactSample"
     },
     "web": {
       "output": "static",
@@ -41,6 +41,27 @@
           "fonts": [
             "./node_modules/@expo/vector-icons/build/vendor/react-native-vector-icons/Fonts/Ionicons.ttf"
           ]
+        }
+      ],
+      [
+        "./node_modules/webengage-expo/src/withWebEngage.js",
+        {
+          "push": {
+            "mode": "development"
+          },
+          "ios": {
+            "WEGLicenseCode": "YOUR_LICENSE_CODE",
+            "WEGEnvironment": "DEFAULT",
+            "WEGLogLevel": "VERBOSE",
+            "WEGAutoRegister": true
+          },
+          "android": {
+            "manifest": {
+              "com.webengage.sdk.android.key": "YOUR_LICENSE_CODE",
+              "com.webengage.sdk.android.environment": "us",
+              "com.webengage.sdk.android.debug": true
+            }
+          }
         }
       ]
     ],
