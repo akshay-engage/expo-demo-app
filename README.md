@@ -1,56 +1,103 @@
-# Welcome to your Expo app 👋
+# Shopping Demo for Expo
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+A simple shopping demo app built with Expo (SDK 57) and Expo Router.
 
-## Get started
+> **Note:** This is the Expo demo app **without WebEngage integration**.
+> Use it as a clean baseline to test integration and compare behavior before/after adding WebEngage.
 
-1. Install dependencies
+## Features
+
+- Login screen (Login with a name, or Skip as Guest) — no real authentication
+- Bottom tabs: **Home**, **Cart**, **Account**
+- Home: welcome message (shows your name, or a "Guest" badge) + product list
+- Product details: image, price, description, and "Add to cart"
+- Cart: item list with quantity steppers, total price, and checkout (shows a success alert and clears the cart)
+- Account: shows your name and a Login/Logout button
+- Products are driven by JSON, so the catalog is easy to change
+
+## Requirements
+
+- Node.js 22.13+
+- A Mac with Xcode (for iOS) and/or Android Studio (for Android)
+
+## Steps to Run
+
+1. Install dependencies:
 
    ```bash
    npm install
    ```
 
-2. Start the app
+2. Generate the native projects:
 
    ```bash
-   npx expo start
+   npx expo prebuild --clean
    ```
 
-In the output, you'll find options to open the app in a
+3. Run on a device or emulator:
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+   ```bash
+   npx expo run:android
+   ```
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+   ```bash
+   npx expo run:ios
+   ```
 
-## Get a fresh project
+### Troubleshooting
 
-When you're ready, run:
+- **"Cannot connect to Expo CLI" on an Android emulator** (URL like `10.0.2.2:8081`): make sure the Metro dev server is running (`npx expo start`), then forward the port:
 
-```bash
-npm run reset-project
+  ```bash
+  adb reverse tcp:8081 tcp:8081
+  ```
+
+- The Ionicons font is bundled into the app (via `useFonts` and the `expo-font` config plugin), so icons work without downloading assets at runtime. If you change the font setup, re-run `npx expo prebuild --clean`.
+
+## Changing the Catalog
+
+All content lives in one file: `src/data/catalog.json`.
+
+- `app` — title, tagline, currency symbol, and button labels
+- `products` — the list of items shown in the app
+
+Each product uses generic fields, so you can repurpose the app (recharge, airline booking, etc.) by editing this file:
+
+```json
+{
+  "id": "p1",
+  "title": "Wireless Headphones",
+  "price": 129.99,
+  "image": "https://example.com/image.jpg",
+  "description": "Short product description.",
+  "category": "Audio"
+}
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+## Project Structure
 
-### Other setup steps
+```
+src/
+  app/
+    _layout.tsx          # Root layout + providers + login/tabs routing
+    login.tsx            # Login / Skip screen
+    (tabs)/
+      _layout.tsx        # Bottom tab bar
+      index.tsx          # Home
+      cart.tsx           # Cart
+      account.tsx        # Account
+    product/[id].tsx     # Product details
+  context/               # User + Cart state (React Context)
+  data/                  # catalog.json + typed accessor
+  components/            # Shared UI (product card, themed text/view)
+```
 
-- To set up ESLint for linting, run `npx expo lint`, or follow our guide on ["Using ESLint and Prettier"](https://docs.expo.dev/guides/using-eslint/)
-- If you'd like to set up unit testing, follow our guide on ["Unit Testing with Jest"](https://docs.expo.dev/develop/unit-testing/)
-- Learn more about the TypeScript setup in this template in our guide on ["Using TypeScript"](https://docs.expo.dev/guides/typescript/)
+## Notes
 
-## Learn more
+- Login and cart state are kept in memory only, so they reset when the app restarts.
+- This baseline has no analytics or SDK integrations. WebEngage (or any other SDK) can be added on top.
 
-To learn more about developing your project with Expo, look at the following resources:
+## Useful Links
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+- [Expo documentation](https://docs.expo.dev/)
+- [Expo Router](https://docs.expo.dev/router/introduction/)

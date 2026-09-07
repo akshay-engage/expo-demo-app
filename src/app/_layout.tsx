@@ -1,3 +1,5 @@
+import Ionicons from '@expo/vector-icons/Ionicons';
+import { useFonts } from 'expo-font';
 import { DarkTheme, DefaultTheme, Stack, ThemeProvider } from 'expo-router';
 import { useColorScheme } from 'react-native';
 
@@ -26,6 +28,16 @@ function RootNavigator() {
 
 export default function RootLayout() {
   const colorScheme = useColorScheme();
+
+  // Bundle the icon font so it loads from the app itself instead of being
+  // downloaded from the Metro dev server at runtime. This avoids
+  // "ExpoAsset.downloadAsync ... Ionicons.ttf" failures when the device can't
+  // reach the CLI. Hold rendering until the font is ready.
+  const [fontsLoaded] = useFonts(Ionicons.font);
+
+  if (!fontsLoaded) {
+    return null;
+  }
 
   return (
     <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
